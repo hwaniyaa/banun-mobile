@@ -28,7 +28,7 @@
         <h2 class="hidden">global navigation</h2>
         <ul class="gnb__list">
           <li>
-            <a href="">다날</a>
+            <a href="#">다날</a>
             <ul class="gnb__list--sub">
               <li><a href="">다날소개</a></li>
               <li><a href="">인사말</a></li>
@@ -39,7 +39,7 @@
             </ul>
           </li>
           <li>
-            <a href="">서비스</a>
+            <a href="#">서비스</a>
             <ul class="gnb__list--sub">
               <li><a href="">휴대폰결제</a></li>
               <li><a href="">신용카드결제</a></li>
@@ -50,7 +50,7 @@
             </ul>
           </li>
           <li>
-            <a href="">투자</a>
+            <a href="#">투자</a>
             <ul class="gnb__list--sub">
               <li><a href="">주가정보</a></li>
               <li><a href="">재무정보</a></li>
@@ -59,7 +59,7 @@
             </ul>
           </li>
           <li>
-            <a href="">홍보</a>
+            <a href="#">홍보</a>
             <ul class="gnb__list--sub">
               <li><a href="">다날소식</a></li>
               <li><a href="">사회공헌</a></li>
@@ -67,13 +67,13 @@
             </ul>
           </li>
           <li>
-            <a href="">채용</a>
+            <a href="#">채용</a>
             <ul class="gnb__list--sub">
               <li><a href="">채용사이트</a></li>
             </ul>
           </li>
           <li>
-            <a href="">윤리경영</a>
+            <a href="#">윤리경영</a>
             <ul class="gnb__list--sub last">
               <li><a href="">윤리규정</a></li>
               <li><a href="">온라인신문고</a></li>
@@ -81,7 +81,7 @@
           </li>
         </ul>
       </nav>
-      <a href="" class="link">결제내역조회</a>
+      <a href="#" class="link">결제내역조회</a>
       <button class="btn btn--all">
         <span></span>
         <span></span>
@@ -373,46 +373,41 @@
     </footer>
 
     <script>
-      //console.log(window);
-      //window.alert("아이디가 맞지 않습니다.");
-      //dom  (document object model);
-
-      //f(x) = x+5;
-
-      function plus5() {
-        console.log(x + 5);
-      }
-      function bank(money) {
-        console.log(money * 1.045);
-      }
+      // 서브 메뉴 자바스크립트 걸기
+      const depth01 = document.querySelectorAll(".gnb .gnb__list > li > a");
+      const depth02 = document.querySelectorAll(".gnb .gnb__list > li > .gnb__list--sub");
+      const total = depth01.length; 
+      for(let i = 0; i < total; i++) {
+        depth01[i].addEventListener("click",function(e){
+        e.preventDefault(); 
+        for(let j = 0; j < total; j++) {
+          if(i !== j) {
+            depth02[j].classList.remove("on");
+          };
+        };
+        depth02[i].classList.toggle("on");
+      });
+      };
+      
+      // 
+      const btnAll = document.querySelector(".btn--all");
       const header = document.querySelector(".header");
-      const gnb = document.querySelector(".gnb");
-      gnb.addEventListener("mouseenter", function () {
-        header.classList.add("on");
-      });
-      gnb.addEventListener("mouseleave", function () {
-        header.classList.remove("on");
-      });
 
-      const swiper = new Swiper(".platform-swiper", {
-        slidesPerView: "auto",
-        spaceBetween: 50,
-        loop: true,
-        navigation: {
-          nextEl: ".platform-swiper .btn--next",
-          prevEl: ".platform-swiper .btn--prev",
-        },
-      });
-      // scroll event
-      window.addEventListener("scroll", function () {
-        // throttle, debounce
-        // console.log(window.scrollY);
-        if (window.scrollY > 0) {
-          header.classList.add("scroll");
+      btnAll.addEventListener("click",function(){
+        const isContains = header.classList.contains("on");
+        if (isContains) {
+          header.classList.remove("on");
+          setTimeout(function(){
+            for(let i = 0; i < total; i++) {
+            depth02[i].classList.remove("on");
+          }
+          },250);
         } else {
-          header.classList.remove("scroll");
+          header.classList.add("on");
         }
       });
+
+      
     </script>
   </body>
 </html>

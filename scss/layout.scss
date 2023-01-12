@@ -33,6 +33,10 @@ button {
   $h: 60px;
   height: $h;
   background-color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
   .logo {
     &__link {
       display: flex;
@@ -121,6 +125,7 @@ button {
         background-color: $blue;
         color: #fff;
         display: none;
+        transition: all 0.25s ease;
         li {
           a {
             display: flex;
@@ -129,7 +134,25 @@ button {
             border-top: 1px solid darken($blue, 10);
           }
         }
+        &.on {
+          display: block;
+        }
       }
     }
+  }
+  .link {
+    position: absolute;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 14px;
+    border-radius: 100px;
+    top: 15px; right: 60px;
+    background-color: $blue;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    overflow: hidden;
+    @include longShadow(20, darken($blue, 20));
   }
 }
