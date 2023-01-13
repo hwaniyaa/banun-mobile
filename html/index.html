@@ -315,6 +315,7 @@
                 <span class="sticker">food tech</span>
               </li>
             </ul>
+            <div class="pagination"></div>
             <button class="btn btn--prev"></button>
             <button class="btn btn--next"></button>
           </div>
@@ -407,7 +408,21 @@
         }
       });
 
-      
+      new Swiper(".platform-swiper",{
+        slidesPerView: "auto", //몇개 보여주는가
+        spaceBetween: 20, //컨텐츠간 사이
+        loop:true, //무한 루프
+        centeredSlides: true, //이미지 선태로 보이게
+
+        navigation: {
+          nextEl: '.platform-swiper .btn--next',
+          prevEl: '.platform-swiper .btn--prev',
+        },
+        pagination: {
+          el: '.platform-swiper .pagination',
+          type: 'bullets',
+        },
+      });
     </script>
   </body>
 </html>

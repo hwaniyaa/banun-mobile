@@ -4,7 +4,7 @@
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 20px;
   box-sizing: border-box;
 }
 .section {
@@ -13,6 +13,7 @@
   .container {
     min-height: 300px;
     .title-box {
+      margin-bottom: 50px;
       h2 {
         font-size: clamp(24px, 7.5vw, 36px);
         font-weight: 700;
@@ -20,7 +21,7 @@
       }
       p {
         font-size: clamp(14px, 3.5vw, 24px);
-        margin-bottom: 100px;
+        margin-bottom: 50px;
       }
       a {
         font-size: 18px;
@@ -41,6 +42,7 @@
   z-index: -1;
   video {
     width: 100%;
+    // aspect-ratio: 9 / 16;
     height: 100vh;
     object-fit: cover;
   }
@@ -116,10 +118,10 @@
     .icon-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px 0;
+      gap: 30px;
       li {
-        width: (100% / 3);
-        padding: 0 15px;
+        width: calc((100% - 60px) / 3);
+        padding: 0;
         box-sizing: border-box;
         text-align: center;
         img {
@@ -138,36 +140,35 @@
   color: #fff;
   .container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     .title-box {
-      width: 45%;
       h2 {
         white-space: nowrap;
       }
     }
     .contents {
-      width: 55%;
-      padding-top: 100px;
       .block-chain__list {
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 20px 0;
         > li {
-          width: calc(50% - 15px);
-          padding: 30px;
+          // width: calc(50% - 15px);
+          width: 100%;
+          padding: 20px;
           box-sizing: border-box;
           background-color: rgba(255, 255, 255, 0.15);
-          border-radius: 30px;
+          border-radius: 10px;
           box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
           .title {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #fff;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
             h3 {
-              font-size: 20px;
+              font-size: 18px;
               text-transform: uppercase;
             }
             span {
@@ -183,8 +184,9 @@
             display: none;
           }
           ul {
+            font-size: 14px;
             li {
-              margin-top: 20px;
+              margin-top: 10px;
               a {
                 display: block;
                 white-space: nowrap;
@@ -234,9 +236,9 @@
       display: block;
       position: absolute;
       left: 0;
-      width: 300px;
-      top: -120px;
-      bottom: -120px;
+      width: 80px;
+      top: -50px;
+      bottom: -50px;
       background-color: red;
       z-index: 2;
       background: rgb(255, 255, 255);
@@ -247,9 +249,9 @@
       display: block;
       position: absolute;
       right: 0;
-      width: 300px;
-      top: -120px;
-      bottom: -120px;
+      width: 80px;
+      top: -50px;
+      bottom: -50px;
       background-color: red;
       z-index: 2;
       background: rgb(255, 255, 255);
@@ -266,6 +268,23 @@
   }
   .platform-swiper {
     position: relative;
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        border: 2px solid #333;
+        background: none;
+        border-radius: 50px;
+        transition: all 0.25s ease;
+        &-active {
+          background-color: #333;
+          width: 30px;
+        }
+      }
+    }
   }
   .platform-list {
     li {
@@ -277,8 +296,8 @@
         }
       }
       .img-box {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        aspect-ratio: 1 / 1; //이미지/비디오 간 비율 조절
         overflow: hidden;
         border-radius: 50%;
         img {
@@ -299,6 +318,7 @@
         @include longShadow(20, darken($blue, 20));
         top: 50px;
         left: 60%;
+        transform: translateX(-50%);
         white-space: nowrap;
       }
       .title {
@@ -311,25 +331,28 @@
   }
   .btn {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     background-color: #fff;
     border-radius: 50%;
     border: 1px solid #ccc;
     top: 50%;
     transform: translateY(-55%);
     z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &--prev {
-      left: 50px;
+      left: 0;
       &:after {
-        font-size: 48px;
+        font-size: 24px;
         @include icon("chevron_left", 0);
       }
     }
     &--next {
-      right: 50px;
+      right: 0;
       &:after {
-        font-size: 48px;
+        font-size: 24px;
         @include icon("chevron_right", 0);
       }
     }
@@ -346,7 +369,8 @@
 .business {
   .container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    // justify-content: space-between;
     .title-box {
       h2 {
         color: $blue;
@@ -358,11 +382,11 @@
   }
 
   .img {
-    width: 800px;
-    height: 520px;
+    width: 100%;
+    aspect-ratio: 2 / 1;
     background-image: url("../images/main/img_partner.png");
     background-size: cover;
-    border-radius: 50px;
+    border-radius: 20px;
     background-position: center;
   }
 }
